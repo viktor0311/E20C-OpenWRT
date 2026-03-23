@@ -3,13 +3,15 @@ name: Build OpenWrt Full (E20C)
 on:
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Install dependencies
       run: |
@@ -37,14 +39,15 @@ jobs:
     - name: Configure
       run: |
         cd openwrt
+        cp ../files/.config .config
         make defconfig
 
     - name: Build
       run: |
         cd openwrt
-        make -j$(nproc)
+        make -j1 V=s
 
-    - name: Upload Firmware
+    - name: Upload
       uses: actions/upload-artifact@v4
       with:
         name: firmware
