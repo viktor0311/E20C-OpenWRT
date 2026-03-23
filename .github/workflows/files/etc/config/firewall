@@ -1,0 +1,163 @@
+config defaults
+    option input 'ACCEPT'
+    option output 'ACCEPT'
+    option forward 'REJECT'
+
+config zone
+    option name 'lan'
+    list network 'lan'
+    list network 'wg0'
+    option input 'ACCEPT'
+    option output 'ACCEPT'
+    option forward 'ACCEPT'
+
+config zone
+    option name 'wan'
+    list network 'wan'
+    option input 'REJECT'
+    option output 'ACCEPT'
+    option forward 'REJECT'
+    option masq '1'
+
+config forwarding
+    option src 'lan'
+    option dest 'wan'
+
+####################################
+# 端口转发（完整）
+####################################
+
+config redirect
+    option name 'WG'
+    option src 'wan'
+    option src_dport '9980'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '9980'
+    option proto 'tcp'
+
+config redirect
+    option name 'ISTOREOS'
+    option src 'wan'
+    option src_dport '8890'
+    option dest 'lan'
+    option dest_ip '192.168.3.1'
+    option dest_port '80'
+    option proto 'tcp'
+
+config redirect
+    option name 'DSM'
+    option src 'wan'
+    option src_dport '5501'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '5501'
+    option proto 'tcp'
+
+config redirect
+    option name 'Navidrome'
+    option src 'wan'
+    option src_dport '4533'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '4533'
+    option proto 'tcp'
+
+config redirect
+    option name 'Vaultwarden'
+    option src 'wan'
+    option src_dport '8508'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '8508'
+    option proto 'tcp'
+
+config redirect
+    option name 'Baidu'
+    option src 'wan'
+    option src_dport '8092'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '8092'
+    option proto 'tcp'
+
+config redirect
+    option name 'SynologyPhotos'
+    option src 'wan'
+    option src_dport '5502'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '5502'
+    option proto 'tcp'
+
+config redirect
+    option name 'Alist'
+    option src 'wan'
+    option src_dport '5244'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '5244'
+    option proto 'tcp'
+
+config redirect
+    option name 'Lucky'
+    option src 'wan'
+    option src_dport '8895'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '8895'
+    option proto 'tcp'
+
+config redirect
+    option name 'CESU'
+    option src 'wan'
+    option src_dport '3200'
+    option dest 'lan'
+    option dest_ip '192.168.3.1'
+    option dest_port '3200'
+    option proto 'tcp'
+
+config redirect
+    option name 'Leantime'
+    option src 'wan'
+    option src_dport '5805'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '5805'
+    option proto 'tcp'
+
+config redirect
+    option name 'DDNS'
+    option src 'wan'
+    option src_dport '9876'
+    option dest 'lan'
+    option dest_ip '192.168.3.1'
+    option dest_port '9876'
+    option proto 'tcp'
+
+config redirect
+    option name 'MariaDB'
+    option src 'wan'
+    option src_dport '3306'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '3306'
+    option proto 'tcp'
+
+config redirect
+    option name 'SynologyDrive'
+    option src 'wan'
+    option src_dport '6690'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '6690'
+    option proto 'tcp'
+
+config redirect
+    option name 'Custom445'
+    option src 'wan'
+    option src_dport '5506'
+    option dest 'lan'
+    option dest_ip '10.8.1.2'
+    option dest_port '5506'
+    option proto 'tcp'
