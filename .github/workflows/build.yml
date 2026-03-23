@@ -19,8 +19,11 @@ jobs:
       run: |
         cd openwrt-imagebuilder-*
         make image PROFILE=generic \
-        PACKAGES="luci luci-i18n-base-zh-cn luci-app-openclash luci-app-smartdns kmod-wireguard wireguard-tools luci-app-wireguard ddns-go luci-app-qos luci-app-nlbwmon" \
-        FILES="../files"
+
+        PACKAGES="luci luci-i18n-base-zh-cn \
+        kmod-wireguard wireguard-tools luci-app-wireguard \
+        luci-app-smartdns \
+        ddns-go luci-app-qos luci-app-nlbwmon"
 
     - name: Upload
       uses: actions/upload-artifact@v4
